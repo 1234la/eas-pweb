@@ -44,8 +44,7 @@
     <script src="./assets/navbar.js"></script>
 
     <!-- loader -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/loader.css"> -->
+    <link rel="stylesheet" href="../css/loader.css">
 
 </head>
 <body id="body-pd">
@@ -97,7 +96,7 @@
                     </a>
                 </div>
             </div> 
-            <a href="../proses-logout.php" class="nav_link"> 
+            <a href="../proses-logout.php" class="nav_link" onclick="return confirm('Apakah Anda yakin ingin keluar dari situs ini?')"> 
                 <i class='bx bx-log-out nav_icon'></i> 
                 <span class="nav_name">SignOut</span> 
             </a>
@@ -106,75 +105,89 @@
     <!--Container Main start-->
     <div class="height-100 pt-5">
         <!-- <h4>Main Components</h4> -->
-            <div class="mx-3 my-3">
+            <div class="container py-3 px-3">
                     <?php if(isset($_GET['status'])): ?>
                     <p>
                     <?php
                         if($_GET['status'] == 'sukses' && $_GET['role'] == 'siswa') {
-                            echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
-                            echo "Update data siswa dengan NIS ".$_GET['nis']." berhasil !";
-                            echo "</div>";
-                        } else {
-                            echo "<div class=\"alert alert-danger mt-4\" role=\"alert\">";
-                            echo "<b>Update data siswa dengan NIS ".$_GET['nis']." gagal</b>";
-                            echo "</div>";
+                            if ($_GET['operation'] == 'update') {
+                                echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
+                                echo "<b>Update</b> data siswa dengan NIS ".$_GET['nis']." <b>berhasil</b> !";
+                                echo "</div>";
+                            }
+                            elseif($_GET['operation'] == 'hapus'){
+                                echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
+                                echo "<b>Hapus</b> data siswa dengan NIS ".$_GET['nis']." <b>berhasil</b> !";
+                                echo "</div>";
+                            }
+                        }elseif($_GET['status'] == 'gagal' && $_GET['role'] == 'siswa'){
+                            if ($_GET['operation'] == 'update') {
+                                echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
+                                echo "<b>Update</b> data siswa dengan NIS ".$_GET['nis']." <b>gagal</b> !";
+                                echo "</div>";
+                            }
+                            elseif($_GET['operation'] == 'hapus'){
+                                echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
+                                echo "<b>Hapus</b> data siswa dengan NIS ".$_GET['nis']." <b>gagal</b> !";
+                                echo "</div>";
+                            }
                         }
                     ?>
                     </p>
                 <?php endif; ?>
             </div>
-            <!-- <div class="container shadow my-2 py-2 px-2 border rounded-3"> -->
-            <div class="mx-5 my-1">
-                <div style="background: #0275d8; height: 6rem" class="px-3 d-flex align-items-center mb-3">
-                    <h2 class="fs-1" style="color:white;font-weight: bold;">
-                        Data Siswa <span style="font-size: 1.2rem; font-weight: lighter">SMA Harapan Bangsa</span>
-                    </h2> 
-                </div>
-                <div class="mb-3 d-flex justify-content-end">
-                    <a href="create-siswa.php" style="margin-right: 15px;">
-                        <button class="btn btn-success">[+] Tambah Baru</button>
-                    </a>
-                </div>
-                <div class="table-responsive">
-                    <table id="list" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th scope="col">No.</th>
-                                <th scope="col">NIS</th>
-                                <th scope="col">Nama Siswa</th>
-                                <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">NIK</th>
-                                <th scope="col">Tanggal Lahir</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $counter=1;?>
-                            <?php foreach( $siswas as $siswa) :?>
+            <div class="container shadow my-3 py-3 px-3 border rounded-3" style="background-color: white;">
+                <div class="mx-3 my-3" style="background-color: white;">
+                    <div style="background: #0275d8; height: 6rem" class="px-3 d-flex align-items-center mb-3">
+                        <h2 class="fs-1" style="color:white;font-weight: bold;">
+                            Data Siswa <span style="font-size: 1.2rem; font-weight: lighter">SMA Harapan Bangsa</span>
+                        </h2> 
+                    </div>
+                    <div class="mb-3 d-flex justify-content-end">
+                        <a href="create-siswa.php" style="margin-right: 15px;">
+                            <button class="btn btn-success">[+] Tambah Baru</button>
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="list" class="table table-striped" style="width:100%">
+                            <thead>
                                 <tr>
-                                    <th scope="row"><?= $counter++ ?></th>
-                                    <td><?= $siswa["nis"]?></td>
-                                    <td><?= $siswa["nama"]?></td>
-                                    <td><?= $siswa["jenis_kelamin"]?></td>
-                                    <td><?= $siswa["alamat"]?></td>
-                                    <td><?= $siswa["nik"]?></td>
-                                    <td><?= $siswa["tanggal_lahir"]?></td>
-                                    <td>
-                                        <a href="edit-siswa.php?nis=<?= $siswa["nis"]?>">
-                                            <button type="button" name="submit" class="btn btn-warning">Edit</button>
-                                        </a>
-                                        
-                                        <a href="proses-delete.php?nis=<?= $siswa["nis"]?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">
-                                            <button type="button" class="btn btn-danger">Hapus</button>
-                                        </a>
-                                    </td>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">NIS</th>
+                                    <th scope="col">Nama Siswa</th>
+                                    <th scope="col">Jenis Kelamin</th>
+                                    <th scope="col">Alamat</th>
+                                    <th scope="col">NIK</th>
+                                    <th scope="col">Tanggal Lahir</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $counter=1;?>
+                                <?php foreach( $siswas as $siswa) :?>
+                                    <tr>
+                                        <th scope="row"><?= $counter++ ?></th>
+                                        <td><?= $siswa["nis"]?></td>
+                                        <td><?= $siswa["nama"]?></td>
+                                        <td><?= $siswa["jenis_kelamin"]?></td>
+                                        <td><?= $siswa["alamat"]?></td>
+                                        <td><?= $siswa["nik"]?></td>
+                                        <td><?= $siswa["tanggal_lahir"]?></td>
+                                        <td>
+                                            <a href="edit-siswa.php?nis=<?= $siswa["nis"]?>">
+                                                <button type="button" name="submit" class="btn btn-warning">Edit</button>
+                                            </a>
+                                            
+                                            <a href="proses-delete.php?nis=<?= $siswa["nis"]?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')">
+                                                <button type="button" class="btn btn-danger">Hapus</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

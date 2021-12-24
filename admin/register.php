@@ -74,7 +74,7 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
             </p>
         <?php endif; ?>
     </div>
-    <div class="container shadow my-5 py-5 px-5 border rounded-3" style="width:50rem">
+    <div class="container shadow my-5 py-5 px-5 border rounded-3" style="width:50rem;background-color:white;">
         <div style="background: #0275d8; height: 6rem" class="px-3 d-flex align-items-center mb-3">
                 <h2 class="fs-1" style="color:white;font-weight: bold;">
                     Registrasi Akun <span style="font-size: 1.2rem; font-weight: lighter">SMA Harapan Bangsa</span>

@@ -13,11 +13,10 @@ if( isset($_GET['nis']) ){
 
     // apakah query hapus berhasil?
     if( $query ){
-        header('Location: manajemen-siswa.php');
+        header('Location: manajemen-siswa.php?status=sukses&role=siswa&operation=delete&nis'. $nis );
     } else {
-        die("gagal menghapus...");
+        header('Location: manajemen-siswa.php?status=gagal&role=siswa&operation=delete&nis'. $nis );
     }
-
 } else {
     die("akses dilarang...");
 }

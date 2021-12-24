@@ -24,12 +24,11 @@ if(isset($_POST['submit'])){
     // apakah query update berhasil?
     if( $query ) {
         // kalau berhasil alihkan ke halaman manajemen-siswa.php
-        header('Location: ../admin/manajemen-siswa.php?status=sukses&role=siswa&nis='. $nis);
+        header('Location: ../admin/manajemen-siswa.php?status=sukses&role=siswa&operation=update&nis='. $nis);
     } else {
         // kalau gagal tampilkan pesan
-        die("Gagal menyimpan perubahan...");
+        header('Location: ../admin/manajemen-siswa.php?status=gagal&role=siswa&operation=update&nis='. $nis);
     }
-
 } else {
     die("Akses dilarang...");
 }

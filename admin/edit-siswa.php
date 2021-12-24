@@ -47,8 +47,7 @@ if( mysqli_num_rows($query) < 1 ){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     <!-- loader -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/loader.css"> -->
+    <link rel="stylesheet" href="../css/loader.css">
 
 </head>
 <body>
@@ -59,7 +58,7 @@ if( mysqli_num_rows($query) < 1 ){
                     <i class="bi bi-arrow-left-circle-fill me-2"></i>
                     Kembali ke halaman admin
                 </a>
-                <div class="content d-flex align-items-center">
+                <div class="title d-flex align-items-center">
                     <img src="../assets/logo-big.png" alt="" width="60px" height="60px">
                     <h4 class="me-2">SMA Harapan Bangsa | </h4>
                     <h5 style="color:white;">Input Siswa</h5>
@@ -84,7 +83,7 @@ if( mysqli_num_rows($query) < 1 ){
             </p>
         <?php endif; ?>
     </div>
-    <div class="container shadow my-5 py-5 px-5 border rounded-3" style="width:50rem">
+    <div class="container shadow my-5 py-5 px-5 border rounded-3" style="width:50rem; background-color:white">
         <div style="background: #0275d8; height: 6rem" class="px-3 d-flex align-items-center mb-3">
                 <h2 class="fs-1" style="color:white;font-weight: bold;">
                     Edit Data Siswa <span style="font-size: 1.2rem; font-weight: lighter"> SMA Harapan Bangsa</span>
@@ -145,10 +144,12 @@ if( mysqli_num_rows($query) < 1 ){
 </html>
 
 <script type="text/javascript">
+    //date picker
     $(function() {
         $('#datepicker').datepicker();
     });
+    //loader
     $(window).on("load",function(){
-        $(".loader-wrapper").fadeOut("fast");
+        $(".loader-wrapper").fadeOut("slow");
     });
 </script>

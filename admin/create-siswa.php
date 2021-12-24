@@ -25,7 +25,7 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <!-- loader -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="../css/loader.css">
 </head>
 <body>
@@ -36,7 +36,7 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
                     <i class="bi bi-arrow-left-circle-fill me-2"></i>
                     Kembali ke halaman admin
                 </a>
-                <div class="content d-flex align-items-center">
+                <div class="title d-flex align-items-center">
                     <img src="../assets/logo-big.png" alt="" width="60px" height="60px">
                     <h4 class="me-2">SMA Harapan Bangsa | </h4>
                     <h5 style="color:white;">Input Siswa</h5>
@@ -65,7 +65,7 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
             </p>
         <?php endif; ?>
     </div>
-    <div class="container shadow my-5 py-5 px-5 border rounded-3" style="width:50rem">
+    <div class="container shadow my-5 py-5 px-5 border rounded-3" style="width:50rem; background-color:white;">
         <div style="background: #0275d8; height: 6rem" class="px-3 d-flex align-items-center mb-3">
                 <h2 class="fs-1" style="color:white;font-weight: bold;">
                     Input Siswa <span style="font-size: 1.2rem; font-weight: lighter"> SMA Harapan Bangsa</span>
@@ -84,11 +84,11 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
                     - pada input atribut "name" adalah nama atribut yang sama dengan atribut db yang akan di insert
                  -->
                 <label for="nis" class="form-label">NIS</label>
-                <input type="text" name="nis" class="form-control" id="nis" placeholder="Nomer Induk Siswa" required>
+                <input type="text" name="nis" class="form-control" id="nis" placeholder="Nomer Induk Siswa" autocomplete="off" required>
             </div>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Siswa</label>
-                <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap" required>
+                <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap" autocomplete="off" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Jenis Kelamin</label>
@@ -113,7 +113,7 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
             </div>
             <div class="mb-3">
                 <label class="form-label" for="nik">NIK</label>
-                <input type="text" name="nik" class="form-control" id="nik" placeholder="Nomer Induk Kependudukan" required>    
+                <input type="text" name="nik" class="form-control" id="nik" placeholder="Nomer Induk Kependudukan" autocomplete="off" required>    
             </div>
             <div class="mb-5">
                 <label for="tanggal_lahir" class="pb-2">Tanggal Lahir</label>
@@ -124,12 +124,11 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
         </form>
     </div>  
     <!-- loader -->
-    <!-- <div class="loader-wrapper">
+    <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
-    </div> -->
+    </div>
 </body>
 </html>
-
 <script type="text/javascript">
     //data table
     $(function() {
@@ -137,6 +136,6 @@ if(!$_SESSION['login'] && $_SESSION['role'] !== 'admin'){
     });
     //loader
     $(window).on("load",function(){
-     $(".loader-wrapper").fadeOut("fast");
+        $(".loader-wrapper").fadeOut("slow");
     });
 </script>
