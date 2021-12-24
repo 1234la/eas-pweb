@@ -13,9 +13,9 @@ if( isset($_GET['nis']) ){
 
     // apakah query hapus berhasil?
     if( $query ){
-        header('Location: manajemen-siswa.php?status=sukses&role=siswa&operation=delete&nis'. $nis );
+        header('Location: manajemen-siswa.php?status=sukses&role=siswa&operation=delete&nis='. $nis );
     } else {
-        header('Location: manajemen-siswa.php?status=gagal&role=siswa&operation=delete&nis'. $nis );
+        header('Location: manajemen-siswa.php?status=gagal&role=siswa&operation=delete&nis='. $nis );
     }
 } else {
     die("akses dilarang...");

@@ -115,7 +115,7 @@
                                 echo "<b>Update</b> data siswa dengan NIS ".$_GET['nis']." <b>berhasil</b> !";
                                 echo "</div>";
                             }
-                            elseif($_GET['operation'] == 'hapus'){
+                            elseif($_GET['operation'] == 'delete'){
                                 echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
                                 echo "<b>Hapus</b> data siswa dengan NIS ".$_GET['nis']." <b>berhasil</b> !";
                                 echo "</div>";
@@ -126,7 +126,7 @@
                                 echo "<b>Update</b> data siswa dengan NIS ".$_GET['nis']." <b>gagal</b> !";
                                 echo "</div>";
                             }
-                            elseif($_GET['operation'] == 'hapus'){
+                            elseif($_GET['operation'] == 'delete'){
                                 echo "<div class=\"alert alert-success mt-4\" role=\"alert\">";
                                 echo "<b>Hapus</b> data siswa dengan NIS ".$_GET['nis']." <b>gagal</b> !";
                                 echo "</div>";
